@@ -42,9 +42,7 @@ class KomersController extends Controller
     public function store(Request $request)
     {
 
-        $request['user_id'] = auth()->id();
-
-
+        $request['user_id'] = Auth::user()->id;
 
         $request->validate([
             'product' => 'required',

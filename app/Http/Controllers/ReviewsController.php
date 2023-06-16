@@ -11,13 +11,13 @@ class ReviewsController extends Controller
 {
 
         public function __construct() {
-        $this->middleware('auth:sanctum')->only('update','delete');
+        $this->middleware('auth:sanctum');
         $this->middleware('PemilikReview')->only('update','delete');
     }
 
         public function store(Request $request) {
 
-        $request['user_id'] = Auth::user()->id;
+        $request['user_id'] = auth()->id();
 
         $validated = $request->validate([
             'user_id' => 'required',
